@@ -7,7 +7,6 @@ from PIL import Image
 # Получаем кадр с видеокамеры
 frame = cv2.VideoCapture(0)
 
-
 # Находим среди всех контуров только прямоугольники
 def getBoxes(contours_list, min_area):
     boxes = []
@@ -74,7 +73,7 @@ def drawBoxesAngle(img, box, center, angle):
 while True:
     status, image = frame.read()
     image = cv2.flip(image, 1)  # 0 – по вертикали, 1 – по горизонтали, (-1) – по вертикали и по горизонтали
-    
+
     hsv_min = np.array((40, 40, 70), np.uint8)
     hsv_max = np.array((50, 50, 100), np.uint8)
 
