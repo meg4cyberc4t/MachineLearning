@@ -27,8 +27,11 @@ while True:
     # Меняем цветовую модель с BGR на HSV
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     if not isAddColor:
+        image = cv2.cvtColor(image, cv2.COLOR_HSV2RGB)
         image[(...,0)] = image[(...,0)] * 1.10
         np.clip(image, 0, 255)
+        image = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
+
 
 
     image_done = image.copy()
