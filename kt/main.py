@@ -3,6 +3,7 @@ import numpy as np
 import cv2
 import math
 from PIL import Image
+import random
 
 # Получаем кадр с видеокамеры
 frame = cv2.VideoCapture(0)
@@ -20,19 +21,13 @@ while True:
     image = image.copy()
     if isFlip:
         image = cv2.flip(image, -1)  # 0 – по вертикали, 1 – по горизонтали, (-1) – по вертикали и по горизонтали
-
-    hsv_min = np.array((40, 40, 70), np.uint8)
-    hsv_max = np.array((50, 50, 100), np.uint8)
-
+        
     # Меняем цветовую модель с BGR на HSV
-    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     if not isAddColor:
-        image = cv2.cvtColor(image, cv2.COLOR_HSV2RGB)
-        image[(...,0)] = image[(...,0)] * 1.10
+        image[(...,2)] = image[(...,2)] * 1.10
         np.clip(image, 0, 255)
-        image = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
 
-
+    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
     image_done = image.copy()
 
