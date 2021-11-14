@@ -1,2 +1,2 @@
 # MachineLearning
- Мои практические задания по Machine Learning
+My practical tasks on Machine Learning
